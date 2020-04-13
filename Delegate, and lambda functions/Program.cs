@@ -34,7 +34,21 @@ namespace Delegate__and_lambda_functions
 
         private static void Main()
         {
-     
+            //A2 push
+            var program1 = new Program(){Person1 = new Person(){Id = 1,Name = "Ali"}};
+            ShowDelegate sd = program1.Func1;
+            sd += program1.Func2;
+            sd(1);
+            sd -= program1.Func1;
+            sd(2);
+
+            sd = Person.Method;
+            sd(12);
+            Console.ReadKey();
+            // hello world
+
+            // we can't pass more than one argument one predicate
+>>>>>>> 101c1e3c2f9e0d1c1f21cbe1ed775d3a2522e198
 
         }
 
