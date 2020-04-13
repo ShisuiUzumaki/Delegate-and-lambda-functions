@@ -34,16 +34,7 @@ namespace Delegate__and_lambda_functions
 
         private static void Main()
         {
-            var program1 = new Program(){Person1 = new Person(){Id = 1,Name = "Ali"}};
-            ShowDelegate sd = program1.Func1;
-            sd += program1.Func2;
-            sd(1);
-            sd -= program1.Func1;
-            sd(2);
-
-            sd = Person.Method;
-            sd(12);
-            Console.ReadKey();
+     
 
         }
 
