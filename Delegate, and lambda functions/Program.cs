@@ -45,6 +45,8 @@ namespace Delegate__and_lambda_functions
             sd(12);
             Console.ReadKey();
 
+            // we can't pass more than one argument one predicate
+
         }
 
         public void Func1(int x)
