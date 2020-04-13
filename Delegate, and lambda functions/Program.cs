@@ -6,12 +6,17 @@
 
 namespace Delegate__and_lambda_functions
 {
-    public delegate void ShowDelegate();
+    public delegate void ShowDelegate(int x);
 
     internal class Person
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public static void Method(int x)
+        {
+            Console.WriteLine($"Static method called : {x}");
+        }
 
         public void Show()
         {
@@ -30,45 +35,28 @@ namespace Delegate__and_lambda_functions
         private static void Main()
         {
             var program1 = new Program(){Person1 = new Person(){Id = 1,Name = "Ali"}};
-            ShowDelegate callShow = program1.Person1.Show;
-            callShow();
+            ShowDelegate sd = program1.Func1;
+            sd += program1.Func2;
+            sd(1);
+            sd -= program1.Func1;
+            sd(2);
 
-            //Checking built in delegates
-
-            //Action delegate
-            Action action1 = program1.Person1.Show;
-            action1();
-
-            //Action with arguments
-            Action<int> action2 = program1.Show;
-            action2(12);
-
-            //Func without args
-            Func<int> func1 = program1.Person1.GetUserId;
-            Console.WriteLine(func1());
-
-            //Func with args
-            Func<Person, bool> func2 = program1.CreatePerson;
-            Console.WriteLine(func2(program1.Person1));
-
-            //predicate
-            Predicate<bool> pred = (bool x) => x;
-            Console.WriteLine(pred(true));
-
+            sd = Person.Method;
+            sd(12);
             Console.ReadKey();
+
         }
 
-        private bool CreatePerson(Person arg)
+        public void Func1(int x)
         {
-            
-            return arg.IsValidUser();
-
+            Console.WriteLine($"From func1 :{x}");
         }
 
-        public void Show(int x)
+        public void Func2(int y)
         {
-            Console.WriteLine(x);
+            Console.WriteLine($"From func2 :{y}");
         }
+
     }
 
 
