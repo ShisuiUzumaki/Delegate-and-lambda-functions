@@ -44,7 +44,7 @@ namespace Delegate__and_lambda_functions
             sd = Person.Method;
             sd(12);
             Console.ReadKey();
-
+            // hello world
             // we can't pass more than one argument one predicate
 
         }
